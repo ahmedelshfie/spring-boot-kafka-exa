@@ -7,6 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringBootKafkaProducerExampleApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootKafkaProducerExampleApplication.class, args);
+		SpringApplication.run(SpringBootKafkaProducerExampleApplication.class, args); 
 	}
 }
