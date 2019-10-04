@@ -16,24 +16,21 @@ import java.util.Map;
 @Configuration
 public class KakfaConfiguration {
 
-    @Bean
-    public ProducerFactory<String, User> producerFactory() {
-        Map<String, Object> config = new HashMap<>();
+	@Bean
+	public ProducerFactory<String, User> producerFactory() {
+		Map<String, Object> config = new HashMap<>();
 
-        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
-        config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+		config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
+		config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+		config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 
-        return new DefaultKafkaProducerFactory<>(config);
-    }
+		return new DefaultKafkaProducerFactory<>(config);
+	}
 
+	@Bean
+	public KafkaTemplate<String, User> kafkaTemplate() {
+		return new KafkaTemplate<>(producerFactory());
 
-    @Bean
-    public KafkaTemplate<String, User> kafkaTemplate() {
-        return new KafkaTemplate<>(producerFactory());
-        
-        
-    }
-
+	}
 
 }
